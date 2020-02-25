@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
-import lib.*;
+import lib.Node;
+import lib.ConstructTree;
 
 class BottomView {
 

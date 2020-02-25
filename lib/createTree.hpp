@@ -10,10 +10,20 @@ struct TreeNode {
   TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
+#ifndef TRAILING_SPACE
+#define TRAILING_SPACE
 void trimLeftTrailingSpaces(string &input) {
   input.erase(input.begin(), find_if(input.begin(), input.end(),
                                      [](int ch) { return !isspace(ch); }));
 }
+
+void trimRightTrailingSpaces(string &input) {
+  input.erase(
+      find_if(input.rbegin(), input.rend(), [](int ch) { return !isspace(ch); })
+          .base(),
+      input.end());
+}
+#endif
 
 string treeNodeToString(TreeNode* root) {
     if (root == nullptr) {
@@ -37,13 +47,6 @@ string treeNodeToString(TreeNode* root) {
         q.push(node->right);
     }
     return "[" + output.substr(0, output.length() - 2) + "]";
-}
-
-void trimRightTrailingSpaces(string &input) {
-  input.erase(
-      find_if(input.rbegin(), input.rend(), [](int ch) { return !isspace(ch); })
-          .base(),
-      input.end());
 }
 
 TreeNode *stringToTreeNode(string input) {

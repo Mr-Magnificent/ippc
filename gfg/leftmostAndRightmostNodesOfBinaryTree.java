@@ -1,11 +1,12 @@
 import java.util.*;
 
-class TreeNode {
+class Node {
   int val;
-  TreeNode left;
-  TreeNode right;
+  int hd;
+  Node left;
+  Node right;
 
-  TreeNode(TreeNode left, TreeNode right, int val) {
+  Node(Node left, Node right, int val) {
     this.val = val;
     this.left = left;
     this.right = right;
@@ -13,14 +14,14 @@ class TreeNode {
 }
 
 class Tree {
-  static void leftMostAndRightmost(TreeNode root) {
-    Queue<TreeNode> que = new LinkedList<>();
+  static void leftMostAndRightmost(Node root) {
+    Queue<Node> que = new LinkedList<>();
     que.add(root);
     while (!que.isEmpty()) {
       int size = que.size();
       System.out.print(que.peek().val);
       while (size-- > 1) {
-        TreeNode node = que.poll();
+        Node node = que.poll();
         if (node.left != null) {
           que.add(node.left);
         }
