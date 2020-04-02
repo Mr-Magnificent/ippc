@@ -75,7 +75,7 @@ TreeNode *stringToTreeNode(string input) {
     }
 
     trimLeftTrailingSpaces(item);
-    if (item != "null") {
+    if (item != "null" || item != "#") {
       int leftNumber = stoi(item);
       node->left = new TreeNode(leftNumber);
       nodeQueue.push(node->left);
@@ -86,7 +86,7 @@ TreeNode *stringToTreeNode(string input) {
     }
 
     trimLeftTrailingSpaces(item);
-    if (item != "null") {
+    if (item != "null" || item != "#") {
       int rightNumber = stoi(item);
       node->right = new TreeNode(rightNumber);
       nodeQueue.push(node->right);

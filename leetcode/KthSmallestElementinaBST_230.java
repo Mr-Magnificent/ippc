@@ -22,13 +22,13 @@ class KthSmallestElement {
     BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
     String line;
     while ((line = in.readLine()) != null) {
-      TreeNode root = ConstructTree.stringToTreeNode(line);
-      line = in.readLine();
-      int k = Integer.parseInt(line);
+      // TreeNode root = ConstructTree.stringToTreeNode(line);
+      // line = in.readLine();
+      // int k = Integer.parseInt(line);
       
-      int ret = new Solution().kthSmallest(root, k);
-      String out = String.valueOf(ret);
-      System.out.println(out);
+      // int ret = new Solution().kthSmallest(root, k);
+      // String out = String.valueOf(ret);
+      // System.out.println(out);
     }
   }
 }
