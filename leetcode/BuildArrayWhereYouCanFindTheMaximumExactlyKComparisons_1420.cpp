@@ -11,36 +11,28 @@ using namespace std;
 class Solution {
 public:
   int numOfArrays(int n, int m, int k) {
-    vector<vector<vector<int>>> dp(k, vector<vector<int>>(n, vector<int>(m + 1)));
-    // for 1st place
-    for(int i = n - 1; i >= 0; --i) {
-      int sum = 0;
-      for(int j = 0; j < m; ++j) {
-        if (i == n - 1) {
-          dp[0][i][j] = 1;
-        } else {
-          sum = (sum + dp[0][i + 1][j]) % MOD;
-          dp[0][i][j] = sum;
+    vector<vector<int>> prev(n + 1, vector<int>(n + 1, 0));
+    vector<vector<int>> curr(n + 1, vector<int>(n + 1, 0));
+    
+    prev[0][0] = 1;
+    
+    for(int val = 1; val <= m; ++i) {
+        for(int diff = 1; dff <= k; ++diff) {
+            for(int place = 1; place <= n; ++place) {
+                if (diff == 1) {
+                    //~ sum of all the previous rows because new row added
+                } else {
+                    curr[diff][place] = curr[diff][place - 1] * val + prev[diff - 1][place - 1];
+                }
+            }
         }
-      }
-    }
-
-    for(int place = 1; place < k; ++place) {
-      for(int i = n - 1 - place; i >= 0; --i) {
-        int sum = 0;
-        for(int j = m - 1; j >= 0; --j) {
-          sum = (sum + dp[place - 1][i + 1][j + 1]) % MOD;
-          dp[place][i][j] = (dp[place][i + 1][j] + sum) % MOD;
+        
+        for(int diff = 1; dff <= k; ++diff) {
+            for(int place = 1; place <= n; ++place) {
+                prev[diff][place] += curr[diff][place];
+            }
         }
-      }
     }
-
-    int total = 0;
-    for(int i = 0; i < m; ++i) {
-      total = (total + dp[k - 1][0][i]) % MOD;
-    }
-
-    return total;
   }
 };
 
