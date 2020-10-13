@@ -1,5 +1,4 @@
-#include <iostream>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
 // Definition for a Node.
@@ -22,7 +21,20 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
+        if (root == nullptr) return root;
         queue<Node*> que;
-        
+        que.push(root);
+
+        while (!que.empty()) {
+            int size = que.size();
+            while (size--) {
+                Node *remNode = que.front();
+                que.pop();
+
+                if (size != 0) remNode->next = que.front();
+            }
+        }
+
+        return root;
     }
 };
